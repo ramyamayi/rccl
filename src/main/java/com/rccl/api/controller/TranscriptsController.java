@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rccl.api.entity.Transcript;
@@ -25,7 +27,11 @@ public class TranscriptsController {
 	}
 
 	@GetMapping("/transcripts/{transcriptId}")
-	public Optional<Transcript> getById(@PathVariable("transcriptId") String transcriptId) throws Exception {
-		return transcriptService.findByTranscriptId("transcriptId");
+	public Optional<Transcript> getById(@PathVariable(name="transcriptId") String transcriptId) throws Exception {
+		return transcriptService.findByTranscriptId(transcriptId);
+	}
+	@PostMapping("/transcripts")
+	public Transcript addTranscript(@RequestBody Transcript transcript) {
+		return transcriptService.addTranscript(transcript);
 	}
 }

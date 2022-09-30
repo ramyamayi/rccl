@@ -21,8 +21,16 @@ public class TranscriptsService {
 
 
 	public Optional<Transcript> findByTranscriptId(String transcriptId) {
-	
+	if(transcriptRepository.existsById(transcriptId)) {
 		return transcriptRepository.findById(transcriptId);
+		}else {
+			return Optional.empty();
+		}
+	}
+
+
+	public Transcript addTranscript(Transcript transcript) {
+		return transcriptRepository.save(transcript);
 	}
 
 	

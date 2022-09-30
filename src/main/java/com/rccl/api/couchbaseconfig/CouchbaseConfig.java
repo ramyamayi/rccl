@@ -3,7 +3,6 @@ package com.rccl.api.couchbaseconfig;
 import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.couchbase.CouchbaseClientFactory;
@@ -13,6 +12,7 @@ import org.springframework.data.couchbase.core.CouchbaseTemplate;
 import org.springframework.data.couchbase.core.convert.CouchbaseCustomConversions;
 import org.springframework.data.couchbase.repository.config.RepositoryOperationsMapping;
 
+import com.rccl.api.entity.Account;
 import com.rccl.api.entity.Logs;
 
 import lombok.SneakyThrows;
@@ -57,6 +57,7 @@ public class CouchbaseConfig extends AbstractCouchbaseConfiguration {
 	public void configureRepositoryOperationsMapping(RepositoryOperationsMapping mapping) {
 		try {
 			mapping.mapEntity(Logs.class, getCouchbaseTemplate("logs"));
+			mapping.mapEntity(Account.class, getCouchbaseTemplate("accounts"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

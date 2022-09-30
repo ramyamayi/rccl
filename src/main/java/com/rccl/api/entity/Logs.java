@@ -1,5 +1,6 @@
 package com.rccl.api.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -7,11 +8,14 @@ import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
 import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
+import com.couchbase.client.core.deps.com.fasterxml.jackson.annotation.JsonFormat;
+
 @Document
 public class Logs {
 	@Id
 	@GeneratedValue(strategy = GenerationStrategy.USE_ATTRIBUTES)
 	private Long logId;
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date date;
 	private String logComment;
 	public Date getDate() {
@@ -23,6 +27,7 @@ public class Logs {
 	public void setLogId(Long logId) {
 		this.logId = logId;
 	}
+	
 	public void setDate(Date date) {
 		this.date = date;
 	}
@@ -42,10 +47,7 @@ public class Logs {
 	public Logs() {
 		
 	}
-	@Override
-	public String toString() {
-		return "Logs [date=" + date + ", logComment=" + logComment + "]";
-	}
+	
 	
 
 }

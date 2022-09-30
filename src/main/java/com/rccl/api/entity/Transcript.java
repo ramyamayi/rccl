@@ -5,8 +5,11 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
 
+import com.couchbase.client.core.deps.com.fasterxml.jackson.annotation.JsonFormat;
+
 @Document
 public class Transcript {
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date date;
 	@Id
 	private String transcriptId;

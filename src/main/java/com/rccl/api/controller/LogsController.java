@@ -6,10 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rccl.api.entity.Logs;
-
 import com.rccl.api.service.LogsService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,5 +30,9 @@ public class LogsController {
 	@GetMapping("/logs/{logId}")
 	public Optional<Logs> getByLogId(@PathVariable("logId") Long logId ) throws Exception {
 		return logsService.findByLogId(logId);
+	}
+	@PostMapping("/logs")
+	public Logs addLog(@RequestBody Logs log) {
+		return logsService.addLog(log);
 	}
 }
