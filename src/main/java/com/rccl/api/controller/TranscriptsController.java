@@ -26,10 +26,7 @@ public class TranscriptsController {
 		return transcriptService.findAllTranscripts();
 	}
 
-	@GetMapping("/transcripts/{transcriptId}")
-	public Optional<Transcript> getById(@PathVariable(name="transcriptId") String transcriptId) throws Exception {
-		return transcriptService.findByTranscriptId(transcriptId);
-	}
+
 	@PostMapping("/transcripts")
 	public Transcript addTranscript(@RequestBody Transcript transcript) {
 		return transcriptService.addTranscript(transcript);

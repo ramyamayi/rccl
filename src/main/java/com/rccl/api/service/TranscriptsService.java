@@ -1,7 +1,6 @@
 package com.rccl.api.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,19 +18,8 @@ public class TranscriptsService {
 		return transcriptRepository.findAll();
 	}
 
-
-	public Optional<Transcript> findByTranscriptId(String transcriptId) {
-	if(transcriptRepository.existsById(transcriptId)) {
-		return transcriptRepository.findById(transcriptId);
-		}else {
-			return Optional.empty();
-		}
-	}
-
-
 	public Transcript addTranscript(Transcript transcript) {
 		return transcriptRepository.save(transcript);
 	}
 
-	
 }

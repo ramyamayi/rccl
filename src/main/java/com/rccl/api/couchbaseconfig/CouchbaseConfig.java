@@ -59,7 +59,6 @@ public class CouchbaseConfig extends AbstractCouchbaseConfiguration {
 			mapping.mapEntity(Logs.class, getCouchbaseTemplate("logs"));
 			mapping.mapEntity(Account.class, getCouchbaseTemplate("accounts"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

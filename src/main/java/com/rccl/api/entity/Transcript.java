@@ -1,53 +1,73 @@
 package com.rccl.api.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
+import org.springframework.data.couchbase.core.mapping.Field;
 
-import com.couchbase.client.core.deps.com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode
 @Document
+@JsonPropertyOrder({"name","date","time","transcriptBody"})
 public class Transcript {
-	@JsonFormat(pattern="yyyy-MM-dd")
-	private Date date;
 	@Id
-	private String transcriptId;
-	private String transcript_body;
+	private String name;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDateTime date;
+	
+	@Field
+	private List<TranscriptBody> transcriptBody = new ArrayList<TranscriptBody>();
 
-	public Transcript(Date date, String transcriptId, String transcript_body) {
-		super();
-		this.date = date;
-		this.transcriptId = transcriptId;
-		this.transcript_body = transcript_body;
-	}
-
-	public Transcript() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
-	public String getId() {
-		return transcriptId;
+	@JsonFormat(pattern = "HH:mm:ss")
+	public LocalDateTime getTime() {
+		return date;
 	}
 
-	public void setTranscriptId(String transcriptId) {
-		this.transcriptId = transcriptId;
+
+	public String getName() {
+		return name;
 	}
 
-	public String getTranscript_body() {
-		return transcript_body;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setTranscript_body(String transcript_body) {
-		this.transcript_body = transcript_body;
+	public List<TranscriptBody> getTranscriptBody() {
+		return transcriptBody;
+	}
+
+	public void setTranscriptBody(List<TranscriptBody> transcriptBody) {
+		this.transcriptBody = transcriptBody;
+	}
+
+	public Transcript(String name, LocalDateTime date, List<TranscriptBody> transcriptBody
+			) {
+		super();
+		this.name = name;
+		this.date = date;
+		this.transcriptBody = transcriptBody;
+	}
+
+	public Transcript() {
+
 	}
 
 }

@@ -15,22 +15,22 @@ import com.rccl.api.service.LogsService;
 
 import lombok.extern.slf4j.Slf4j;
 
-
 @Slf4j
 @RestController
 public class LogsController {
 	@Autowired
 	LogsService logsService;
-	
+
 	@GetMapping("/logs")
-	public List<Logs> getAll() throws Exception{
+	public List<Logs> getAll() throws Exception {
 		return logsService.getAllLogs();
 	}
-	
+
 	@GetMapping("/logs/{logId}")
-	public Optional<Logs> getByLogId(@PathVariable("logId") Long logId ) throws Exception {
+	public Optional<Logs> getByLogId(@PathVariable("logId") Long logId) throws Exception {
 		return logsService.findByLogId(logId);
 	}
+
 	@PostMapping("/logs")
 	public Logs addLog(@RequestBody Logs log) {
 		return logsService.addLog(log);

@@ -1,13 +1,11 @@
 package com.rccl.api.entity;
 
-
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
 import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
-import com.couchbase.client.core.deps.com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Document
@@ -21,10 +19,8 @@ public class Account {
 	private String phone;
 	private String groupId;
 	private int room;
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private String bday;
-	
-	
 
 	public Long getAccountId() {
 		return accountId;
@@ -78,14 +74,13 @@ public class Account {
 		this.room = room;
 	}
 
-	public  String getBday() {
+	public String getBday() {
 		return bday;
 	}
+
 	public void setRoom(String bday) {
 		this.bday = bday;
 	}
-
-	
 
 	public Account(Long accountId, String name, String loyalty, String email, String phone, String groupId, int room,
 			String bday) {
