@@ -1,4 +1,4 @@
-package com.rccl.api.entity;
+package com.rccl.api.entity.transcript;
 
 import java.time.LocalDateTime;
 
@@ -15,16 +15,16 @@ public class TranscriptBody {
 
 	@Id
 	@JsonFormat(pattern = "HH:mm:ss")
-	private LocalDateTime time;
+	private LocalDateTime mTime;
 	private String source;
 	private String message;
 
-	public LocalDateTime getTime() {
-		return time;
+	public LocalDateTime getmTime() {
+		return mTime;
 	}
 
-	public void setTime(LocalDateTime time) {
-		this.time = time;
+	public void setmTime(LocalDateTime mTime) {
+		this.mTime = mTime;
 	}
 
 	public String getSource() {
@@ -43,9 +43,9 @@ public class TranscriptBody {
 		this.message = message;
 	}
 
-	public TranscriptBody(LocalDateTime time, String source, String message) {
+	public TranscriptBody(LocalDateTime mTime, String source, String message) {
 		super();
-		this.time = time;
+		this.mTime = mTime;
 		this.source = source;
 		this.message = message;
 	}

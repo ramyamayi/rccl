@@ -30,7 +30,7 @@ public class AccountController {
 		return accountservice.findAllaccounts();
 	}
 
-	@GetMapping("/find")
+	/*@GetMapping("/find")
 	public Account getAccountByName(@RequestParam(value = "name", required = false) String name,
 			@RequestParam(value = "phone", required = false) String phone) throws AppException {
 		if (name != null && !"".equalsIgnoreCase(name.trim())) {
@@ -48,5 +48,6 @@ public class AccountController {
 	@PostMapping("/accounts")
 	public Account addAccount(@RequestBody Account account) throws AppException {
 		return accountservice.addAccount(account);
-	}
+	}*/
+	
 }

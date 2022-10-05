@@ -8,11 +8,15 @@ import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
 import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Document
+
 public class Logs {
 	@Id
 	@GeneratedValue(strategy = GenerationStrategy.USE_ATTRIBUTES)
+	//@JsonIgnore
 	private Long logId;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date date;

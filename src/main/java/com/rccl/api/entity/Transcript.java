@@ -10,6 +10,7 @@ import org.springframework.data.couchbase.core.mapping.Field;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.rccl.api.entity.transcript.TranscriptBody;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

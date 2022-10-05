@@ -2,101 +2,109 @@ package com.rccl.api.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
-import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
-import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.rccl.api.entity.account.ContactInformation;
+import com.rccl.api.entity.account.LoyaltyInformation;
+import com.rccl.api.entity.account.PersonalInformation;
 
+import lombok.Data;
 
 @Document
+@Data
 public class Account {
 	@Id
-	@GeneratedValue(strategy = GenerationStrategy.USE_ATTRIBUTES)
-	private Long accountId;
-	private String name;
-	private String loyalty;
-	private String email;
-	private String phone;
-	private String groupId;
-	private int room;
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private String bday;
+	private String accountId;
 
-	public Long getAccountId() {
+	private String consumerId;
+	private ContactInformation contactInformation;
+	private LoyaltyInformation loyaltyInformation;
+	private PersonalInformation personalInformation;
+	private String uid;
+	private String uidType;
+
+	public void setConsumerId(String consumerId) {
+
+		this.consumerId = consumerId;
+
+	}
+
+	public String getAccountId() {
 		return accountId;
 	}
 
-	public void setLoyalty(String loyalty) {
-		this.loyalty = loyalty;
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
 	}
 
-	public String getName() {
-		return name;
+	public ContactInformation getContactInformation() {
+		return contactInformation;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setContactInformation(ContactInformation contactInformation) {
+		this.contactInformation = contactInformation;
 	}
 
-	public String getLoyalty() {
-		return loyalty;
+	public LoyaltyInformation getLoyaltyInformation() {
+		return loyaltyInformation;
 	}
 
-	public String getEmail() {
-		return email;
+	public void setLoyaltyInformation(LoyaltyInformation loyaltyInformation) {
+		this.loyaltyInformation = loyaltyInformation;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public PersonalInformation getPersonalInformation() {
+		return personalInformation;
 	}
 
-	public String getPhone() {
-		return phone;
+	public void setPersonalInformation(PersonalInformation personalInformation) {
+		this.personalInformation = personalInformation;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public String getUid() {
+		return this.uid;
 	}
 
-	public String getGroupId() {
-		return groupId;
+	public void setUid(String uid) {
+		if(contactInformation.getEmail().equals(uid)) {
+		this.uid = contactInformation.getEmail();
+		}
+		else if(contactInformation.getPhoneNumber().equals(uid)) {
+			this.uid = contactInformation.getPhoneNumber();
+		}
 	}
 
-	public void setGroupId(String groupId) {
-		this.groupId = groupId;
+	public String getUidType() {
+		if((this.uid).equals(contactInformation.getEmail())) {
+		return "EMAIL";
+		}
+	
+		else if((this.uid).equals(contactInformation.getPhoneNumber())) {
+			return "PHONE";
+		}
+		else {
+			return null;
+		}
 	}
 
-	public int getRoom() {
-		return room;
+	public void setUidType(String uidType) {
+		this.uidType = uidType;
 	}
 
-	public void setRoom(int room) {
-		this.room = room;
+	public String getConsumerId() {
+		return consumerId;
 	}
 
-	public String getBday() {
-		return bday;
-	}
-
-	public void setRoom(String bday) {
-		this.bday = bday;
-	}
-
-	public Account(Long accountId, String name, String loyalty, String email, String phone, String groupId, int room,
-			String bday) {
+	public Account(String accountId, String consumerId, ContactInformation contactInformation,
+			LoyaltyInformation loyaltyInformation, PersonalInformation personalInformation, String uid,
+			String uidType) {
 		super();
 		this.accountId = accountId;
-		this.name = name;
-		this.loyalty = loyalty;
-		this.email = email;
-		this.phone = phone;
-		this.groupId = groupId;
-		this.room = room;
-		this.bday = bday;
-	}
-
-	public Account() {
-
+		this.consumerId = consumerId;
+		this.contactInformation = contactInformation;
+		this.loyaltyInformation = loyaltyInformation;
+		this.personalInformation = personalInformation;
+		this.uid = uid;
+		this.uidType = uidType;
 	}
 
 }
