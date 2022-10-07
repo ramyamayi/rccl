@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode
-public class TranscriptBody {
+public class RecordBody {
 
 	@Id
 	@JsonFormat(pattern = "HH:mm:ss")
@@ -43,13 +43,13 @@ public class TranscriptBody {
 		this.message = message;
 	}
 
-	public TranscriptBody(LocalDateTime mTime, String source, String message) {
+	public RecordBody(LocalDateTime mTime, String source, String message) {
 		super();
 		this.mTime = mTime;
 		this.source = source;
 		this.message = message;
 	}
 
-	public TranscriptBody() {
+	public RecordBody() {
 	}
 }

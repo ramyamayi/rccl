@@ -13,7 +13,8 @@ import org.springframework.data.couchbase.core.convert.CouchbaseCustomConversion
 import org.springframework.data.couchbase.repository.config.RepositoryOperationsMapping;
 
 import com.rccl.api.entity.Account;
-import com.rccl.api.entity.Logs;
+import com.rccl.api.entity.Bookings;
+import com.rccl.api.entity.GuestLogs;
 
 import lombok.SneakyThrows;
 
@@ -50,14 +51,16 @@ public class CouchbaseConfig extends AbstractCouchbaseConfiguration {
 	@Override
 	public String getBucketName() {
 		// TODO Auto-generated method stub
-		return "transcript";
+		return "record";
 	}
 
 	@Override
 	public void configureRepositoryOperationsMapping(RepositoryOperationsMapping mapping) {
 		try {
-			mapping.mapEntity(Logs.class, getCouchbaseTemplate("logs"));
+			mapping.mapEntity(GuestLogs.class, getCouchbaseTemplate("logs"));
 			mapping.mapEntity(Account.class, getCouchbaseTemplate("accounts"));
+		mapping.mapEntity(Bookings.class, getCouchbaseTemplate("bookings"));
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

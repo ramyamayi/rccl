@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rccl.api.entity.Transcript;
-import com.rccl.api.service.TranscriptsService;
+import com.rccl.api.entity.Record;
+import com.rccl.api.service.RecordService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-public class TranscriptsController {
+public class  RecordController {
 	@Autowired
-	private TranscriptsService transcriptService;
+	private RecordService recordService;
 
-	@GetMapping("/transcripts")
-	public List<Transcript> getAll() throws Exception {
-		return transcriptService.findAllTranscripts();
+	@GetMapping("/records")
+	public List<Record> getAll() throws Exception {
+		return recordService.findAllRecords();
 	}
 
 
-	@PostMapping("/transcripts")
-	public Transcript addTranscript(@RequestBody Transcript transcript) {
-		return transcriptService.addTranscript(transcript);
+	@PostMapping("/records")
+	public Record addRecord(@RequestBody Record record) {
+		return recordService.addRecord(record);
 	}
 }

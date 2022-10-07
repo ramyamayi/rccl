@@ -18,14 +18,29 @@ public class AccountServiceImpl implements AccountService {
 		return accountRepository.findAll();
 	}
 
+	@Override
+	public Account getAccountByAccountUid(String accountUId) {
+		return accountRepository.findByUid(accountUId).orElse(null);
+	}
+
+
+	@Override
+	public String getAccountContactNameByAccountUid(String accountUId) {
+		Account account = accountRepository.findByUid(accountUId).orElse(null);
+		return account.getPersonalInformation().getFirstName() + " " + account.getPersonalInformation().getLastName();
+	}
+
+	@Override
+	public Account addAccount(Account account) {
+		
+		
+		return accountRepository.save(account);
+	}
+
 	/*
-	 * public Account addAccount(Account account) { return
-	 * accountRepository.save(account); }
-	 * 
-	 * public Account findByAccountName(String name) { Optional<Account> account =
-	 * accountRepository.findByNameIgnoreCase(name); return account.orElse(null); }
-	 * 
+	
 	 * public Account findByAccountPhone(String name) { Optional<Account> account =
 	 * accountRepository.findByPhone(name); return account.orElse(null); }
 	 */
+
 }

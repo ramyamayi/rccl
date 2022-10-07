@@ -1,5 +1,7 @@
 package com.rccl.api.entity.account;
 
+import org.springframework.context.annotation.Configuration;
+
 import lombok.Data;
 
 @Data

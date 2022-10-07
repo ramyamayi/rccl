@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rccl.api.entity.Logs;
-import com.rccl.api.service.LogsService;
+import com.rccl.api.entity.GuestLogs;
+import com.rccl.api.service.GuestLogsService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-public class LogsController {
+public class GuestLogsController {
 	@Autowired
-	LogsService logsService;
+	GuestLogsService logsService;
 
 	@GetMapping("/logs")
-	public List<Logs> getAll() throws Exception {
-		return logsService.getAllLogs();
+	public List<GuestLogs> getAll() throws Exception {
+		return logsService.getAllGuestLogs();
 	}
 
 	@GetMapping("/logs/{logId}")
-	public Optional<Logs> getByLogId(@PathVariable("logId") Long logId) throws Exception {
-		return logsService.findByLogId(logId);
+	public Optional<GuestLogs> getByLogId(@PathVariable("logId") Long logId) throws Exception {
+		return logsService.findByGuestLogId(logId);
 	}
 
 	@PostMapping("/logs")
-	public Logs addLog(@RequestBody Logs log) {
-		return logsService.addLog(log);
+	public GuestLogs addLog(@RequestBody GuestLogs log) {
+		return logsService.addGuestLog(log);
 	}
 }

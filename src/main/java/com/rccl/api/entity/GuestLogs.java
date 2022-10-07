@@ -8,12 +8,11 @@ import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
 import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 
 @Document
 
-public class Logs {
+public class GuestLogs {
 	@Id
 	@GeneratedValue(strategy = GenerationStrategy.USE_ATTRIBUTES)
 	//@JsonIgnore
@@ -46,15 +45,6 @@ public class Logs {
 		this.logComment = logComment;
 	}
 
-	public Logs(Long logId, Date date, String logComment) {
-		super();
-		this.logId = logId;
-		this.date = date;
-		this.logComment = logComment;
-	}
-
-	public Logs() {
-
-	}
+	
 
 }

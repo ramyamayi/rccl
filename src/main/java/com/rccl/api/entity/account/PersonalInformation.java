@@ -1,6 +1,6 @@
 package com.rccl.api.entity.account;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -10,25 +10,18 @@ import lombok.Data;
 public class PersonalInformation {
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private LocalDateTime birthDate;
+	private Date birthDate;
 	private String firstName;
 
 	private String lastName;
 	private String middleName;
 
-	public PersonalInformation(LocalDateTime birthDate, String firstName, String lastName, String middleName) {
-		super();
-		this.birthDate = birthDate;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.middleName = middleName;
-	}
 
-	public LocalDateTime getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDateTime birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -56,8 +49,5 @@ public class PersonalInformation {
 		this.middleName = middleName;
 	}
 
-	public PersonalInformation() {
-
-	}
-
+	
 }

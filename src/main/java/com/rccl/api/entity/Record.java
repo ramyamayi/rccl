@@ -2,6 +2,7 @@ package com.rccl.api.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -10,7 +11,7 @@ import org.springframework.data.couchbase.core.mapping.Field;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.rccl.api.entity.transcript.TranscriptBody;
+import com.rccl.api.entity.transcript.RecordBody;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,15 +20,15 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode
 @Document
 @JsonPropertyOrder({"name","date","time","transcriptBody"})
-public class Transcript {
+public class Record {
 	@Id
 	private String name;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")	
 	private LocalDateTime date;
 	
 	@Field
-	private List<TranscriptBody> transcriptBody = new ArrayList<TranscriptBody>();
+	private List<RecordBody> recordBody = new ArrayList<RecordBody>();
 
 	public LocalDateTime getDate() {
 		return date;
@@ -51,24 +52,14 @@ public class Transcript {
 		this.name = name;
 	}
 
-	public List<TranscriptBody> getTranscriptBody() {
-		return transcriptBody;
+	public List<RecordBody> getRecordBody() {
+		return recordBody;
 	}
 
-	public void setTranscriptBody(List<TranscriptBody> transcriptBody) {
-		this.transcriptBody = transcriptBody;
+	public void setTranscriptBody(List<RecordBody> recordBody) {
+		this.recordBody = recordBody;
 	}
 
-	public Transcript(String name, LocalDateTime date, List<TranscriptBody> transcriptBody
-			) {
-		super();
-		this.name = name;
-		this.date = date;
-		this.transcriptBody = transcriptBody;
-	}
-
-	public Transcript() {
-
-	}
+	
 
 }

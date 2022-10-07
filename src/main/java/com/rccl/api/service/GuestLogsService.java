@@ -6,20 +6,20 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rccl.api.entity.Logs;
-import com.rccl.api.entity.Transcript;
-import com.rccl.api.respository.LogRepository;
+import com.rccl.api.entity.GuestLogs;
+import com.rccl.api.entity.Record;
+import com.rccl.api.respository.GuestLogRepository;
 
 @Service
-public class LogsService {
+public class GuestLogsService {
 	@Autowired
-	private LogRepository logRepository;
+	private GuestLogRepository logRepository;
 
-	public List<Logs> getAllLogs() {
+	public List<GuestLogs> getAllGuestLogs() {
 		return logRepository.findAll();
 	}
 
-	public Optional<Logs> findByLogId(Long logId) {
+	public Optional<GuestLogs> findByGuestLogId(Long logId) {
 		
 		if(logRepository.existsById(logId)) {
 			return logRepository.findById(logId);
@@ -29,7 +29,7 @@ public class LogsService {
 		}
 	
 
-	public Logs addLog(Logs log) {
+	public GuestLogs addGuestLog(GuestLogs log) {
 		return logRepository.save(log);
 	}
 	

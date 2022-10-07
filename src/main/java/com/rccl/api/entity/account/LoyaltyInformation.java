@@ -1,6 +1,5 @@
 package com.rccl.api.entity.account;
 
-import org.apache.commons.lang3.StringUtils;
 
 import lombok.Data;
 
@@ -123,37 +122,5 @@ public class LoyaltyInformation {
 		return celebrityBlueChipId;
 	}
 
-	public LoyaltyInformation(String crownAndAnchorId,
-			CrownandAnchorSocietyLoyaltyTierEnum crownanndAnchorSocietyLoyaltyTier, String captainsClubId,
-			CaptainsClubLoyaltyTierEnum captainsClubLoyaltyTier, String azamaraLoyaltyId, String clubRoyaleId,
-			ClubRoyaleLoyaltyTierEnum clubRoyaleLoyaltyTier, String celebrityBlueChipId,
-			CelebrityBlueChipLoyaltyTierEnum celebrityBlueChipLoyaltyTier) {
-		super();
-		this.crownAndAnchorId = crownAndAnchorId;
-		this.crownandAnchorSocietyLoyaltyTier = crownanndAnchorSocietyLoyaltyTier;
-		this.captainsClubId = captainsClubId;
-		this.captainsClubLoyaltyTier = captainsClubLoyaltyTier;
-		this.azamaraLoyaltyId = azamaraLoyaltyId;
-		this.clubRoyaleId = clubRoyaleId;
-		this.clubRoyaleLoyaltyTier = clubRoyaleLoyaltyTier;
-		this.celebrityBlueChipId = celebrityBlueChipId;
-		this.celebrityBlueChipLoyaltyTier = celebrityBlueChipLoyaltyTier;
-	}
 
-	public LoyaltyInformation() {
-
-	}
-
-	/*public boolean isNumeric(String string) {
-	
-		 if (string == null) {
-		        return false;
-		    }
-		    try {
-		        double d = Double.parseDouble(string);
-		    } catch (NumberFormatException nfe) {
-		        return false;
-		    }
-		    return true;
-}*/
 }

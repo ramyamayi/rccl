@@ -7,11 +7,11 @@ import org.springframework.data.couchbase.repository.ScanConsistency;
 import org.springframework.stereotype.Repository;
 
 import com.couchbase.client.java.query.QueryScanConsistency;
-import com.rccl.api.entity.Logs;
+import com.rccl.api.entity.GuestLogs;
 
 @Repository
-public interface LogRepository extends CouchbaseRepository<Logs,Long>{
+public interface GuestLogRepository extends CouchbaseRepository<GuestLogs,Long>{
 	@Override
     @ScanConsistency(query = QueryScanConsistency.REQUEST_PLUS)
-    List<Logs> findAll();
+    List<GuestLogs> findAll();
 }
