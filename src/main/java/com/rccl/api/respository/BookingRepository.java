@@ -2,6 +2,7 @@ package com.rccl.api.respository;
 
 import java.util.List;
 
+
 import org.springframework.data.couchbase.repository.CouchbaseRepository;
 import org.springframework.data.couchbase.repository.ScanConsistency;
 import org.springframework.stereotype.Repository;

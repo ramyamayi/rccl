@@ -41,7 +41,7 @@ public class AccountController {
 	}
 
 	@PostMapping
-	public Account addNewAccount(@RequestBody Account account) throws AppException {
+	public Account addNewAccount(@RequestBody Account account){
 		return accountService.addAccount(account);
 	}
 

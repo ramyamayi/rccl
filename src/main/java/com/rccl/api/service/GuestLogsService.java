@@ -19,19 +19,22 @@ public class GuestLogsService {
 		return logRepository.findAll();
 	}
 
-	public Optional<GuestLogs> findByGuestLogId(Long logId) {
+	public GuestLogs findByGuestLogId(Long logId) {
+
+			return logRepository.findById(logId).orElse(null);
 		
-		if(logRepository.existsById(logId)) {
-			return logRepository.findById(logId);
-		}else {
-				return Optional.empty();
-			}
-		}
-	
+	}
 
 	public GuestLogs addGuestLog(GuestLogs log) {
 		return logRepository.save(log);
 	}
+
+	public void deleteByLogId(Long logId) {
+	logRepository.deleteById(logId);
 	
+
+	}
+
+
 
 }

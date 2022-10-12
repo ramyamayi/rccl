@@ -11,7 +11,7 @@ import com.rccl.api.service.AccountService;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-	@Autowired
+	@Autowired(required=true)
 	private AccountRepository accountRepository;
 
 	public List<Account> findAllaccounts() {

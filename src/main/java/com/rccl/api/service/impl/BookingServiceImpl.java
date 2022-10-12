@@ -30,6 +30,12 @@ public class BookingServiceImpl implements BookingService {
 	public List<Bookings> findAllBookingsByAccountId(String accountId) {
 		return bookingRepository.findByAccountId(accountId);
 	}
+
+
+	@Override
+	public void deleteBookinByBookingId(String bookingId) {
+	bookingRepository.deleteById(bookingId);
+	}
 	
 
 }

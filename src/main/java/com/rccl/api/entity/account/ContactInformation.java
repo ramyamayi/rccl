@@ -1,7 +1,5 @@
 package com.rccl.api.entity.account;
 
-import org.springframework.context.annotation.Configuration;
-
 import lombok.Data;
 
 @Data
@@ -11,17 +9,7 @@ public class ContactInformation {
 	private String mobileNumber;
     private String phoneNumber;
 
-	public ContactInformation() {
-
-	}
-
-	public ContactInformation(String email, String mobileNumber, String phoneNumber) {
-		super();
-		this.email = email;
-		this.mobileNumber = mobileNumber;
-		this.phoneNumber = phoneNumber;
-	}
-
+	
 	public String getEmail() {
 		return email;
 	}

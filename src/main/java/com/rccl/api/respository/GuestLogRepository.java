@@ -2,6 +2,8 @@ package com.rccl.api.respository;
 
 import java.util.List;
 
+import org.springframework.data.couchbase.core.query.N1qlPrimaryIndexed;
+import org.springframework.data.couchbase.core.query.N1qlSecondaryIndexed;
 import org.springframework.data.couchbase.repository.CouchbaseRepository;
 import org.springframework.data.couchbase.repository.ScanConsistency;
 import org.springframework.stereotype.Repository;
@@ -13,5 +15,7 @@ import com.rccl.api.entity.GuestLogs;
 public interface GuestLogRepository extends CouchbaseRepository<GuestLogs,Long>{
 	@Override
     @ScanConsistency(query = QueryScanConsistency.REQUEST_PLUS)
-    List<GuestLogs> findAll();
+   public List<GuestLogs> findAll();
+
+	
 }

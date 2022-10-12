@@ -13,4 +13,6 @@ public interface BookingService {
 
 	List<Bookings> findAllBookingsByAccountId(String accountId);
 
+	void deleteBookinByBookingId(String bookingId);
+
 }

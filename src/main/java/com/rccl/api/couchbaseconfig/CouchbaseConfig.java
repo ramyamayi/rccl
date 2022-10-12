@@ -3,6 +3,7 @@ package com.rccl.api.couchbaseconfig;
 import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.couchbase.CouchbaseClientFactory;
@@ -24,34 +25,44 @@ public class CouchbaseConfig extends AbstractCouchbaseConfiguration {
 	@Autowired
 	private ApplicationContext context;
 
+	@Value("${spring.data.couchbase.bucket-name}")
+	private String bucketName;
+
+	@Value("${spring.couchbase.username}")
+	private String username;
+
+	@Value("${spring.couchbase.password}")
+	private String password;
+
+	@Value("${spring.couchbase.connection-string}")
+	private String connectionString;
+
+	@Value("${spring.data.couchbase.auto-index}")
+	private boolean autoindexcreation;
+
 	@Override
 	protected boolean autoIndexCreation() {
-		return true;
+		return this.autoindexcreation;
 	}
 
 	@Override
 	public String getConnectionString() {
-		// TODO Auto-generated method stub
-		return "127.0.0.1";
-
+		return this.connectionString;
 	}
 
 	@Override
 	public String getUserName() {
-		// TODO Auto-generated method stub
-		return "ramya";
+		return this.username;
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return "ramya12";
+		return this.password;
 	}
 
 	@Override
 	public String getBucketName() {
-		// TODO Auto-generated method stub
-		return "record";
+		return this.bucketName;
 	}
 
 	@Override
@@ -59,8 +70,8 @@ public class CouchbaseConfig extends AbstractCouchbaseConfiguration {
 		try {
 			mapping.mapEntity(GuestLogs.class, getCouchbaseTemplate("logs"));
 			mapping.mapEntity(Account.class, getCouchbaseTemplate("accounts"));
-		mapping.mapEntity(Bookings.class, getCouchbaseTemplate("bookings"));
-		
+			mapping.mapEntity(Bookings.class, getCouchbaseTemplate("bookings"));
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
