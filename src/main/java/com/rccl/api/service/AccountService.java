@@ -3,7 +3,6 @@ package com.rccl.api.service;
 import java.util.List;
 
 import com.rccl.api.entity.Account;
-import com.rccl.api.entity.Bookings;
 
 public interface AccountService {
 	public List<Account> findAllaccounts();
@@ -14,4 +13,10 @@ public interface AccountService {
 
 
 	public Account addAccount(Account account);
+
+	public String deleteAccount(String accountUId);
+
+	public Account updateAccount(String accountUId, Account account) throws Exception;
+
+	
 }

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rccl.api.entity.Bookings;
 import com.rccl.api.entity.GuestLogs;
 import com.rccl.api.entity.Record;
 import com.rccl.api.respository.GuestLogRepository;
@@ -33,6 +34,11 @@ public class GuestLogsService {
 	logRepository.deleteById(logId);
 	
 
+	}
+
+	public GuestLogs updateLogs(Long logId, GuestLogs log) throws Exception {
+		GuestLogs updateLog = logRepository.findById(logId).orElseThrow(() -> new Exception("Resource not found"));
+		return logRepository.save(updateLog);
 	}
 
 

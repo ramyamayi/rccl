@@ -13,29 +13,32 @@ import com.rccl.api.service.BookingService;
 public class BookingServiceImpl implements BookingService {
 	@Autowired
 	private BookingRepository bookingRepository;
-	
 
 	public List<Bookings> findAllBookings() {
 		return bookingRepository.findAll();
 	}
-
 
 	@Override
 	public Bookings addBooking(Bookings booking) {
 		return bookingRepository.save(booking);
 	}
 
-
 	@Override
 	public List<Bookings> findAllBookingsByAccountId(String accountId) {
 		return bookingRepository.findByAccountId(accountId);
 	}
 
-
 	@Override
 	public void deleteBookinByBookingId(String bookingId) {
-	bookingRepository.deleteById(bookingId);
+		bookingRepository.deleteById(bookingId);
 	}
-	
+
+	@Override
+	public Bookings updateBooking(String bookingId, Bookings booking) throws Exception {
+
+		Bookings updateBooking = bookingRepository.findById(bookingId).orElseThrow(() -> new Exception("Resource not found"));
+		return bookingRepository.save(updateBooking);
+
+	}
 
 }

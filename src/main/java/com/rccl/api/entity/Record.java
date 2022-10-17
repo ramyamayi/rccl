@@ -22,7 +22,7 @@ import lombok.EqualsAndHashCode;
 @JsonPropertyOrder({"name","date","time","transcriptBody"})
 public class Record {
 	@Id
-	private String name;
+	private String record_Id;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")	
 	private LocalDateTime date;
@@ -45,11 +45,11 @@ public class Record {
 
 
 	public String getName() {
-		return name;
+		return record_Id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String record_Id) {
+		this.record_Id = record_Id;
 	}
 
 	public List<RecordBody> getRecordBody() {

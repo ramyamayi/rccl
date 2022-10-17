@@ -37,15 +37,16 @@ public class GuestLogsController {
 	public GuestLogs addLog(@RequestBody GuestLogs log) {
 		return logsService.addGuestLog(log);
 	}
-	
-	@DeleteMapping("/logs/find")
-	public void deleteByLogId(@RequestParam("logId")Long logId) throws Exception {
-		logsService.deleteByLogId(logId);
-		
-	}
-	@PutMapping("/logs/{logId}")
-     public void updateByLogId(@PathVariable("logId")Long logId) throws Exception {
 
-	
+	@DeleteMapping("/logs/find")
+	public void deleteByLogId(@RequestParam("logId") Long logId) throws Exception {
+		logsService.deleteByLogId(logId);
+
 	}
-     }
+
+	@PutMapping("/logs/{logId}")
+	public GuestLogs updateByLogId(@PathVariable("logId") Long logId, @RequestBody GuestLogs log) throws Exception {
+	return	logsService.updateLogs(logId, log);
+
+	}
+}

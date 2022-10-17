@@ -15,4 +15,6 @@ public interface BookingService {
 
 	void deleteBookinByBookingId(String bookingId);
 
+	Bookings updateBooking(String bookingId, Bookings booking) throws Exception;
+
 }

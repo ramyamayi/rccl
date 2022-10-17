@@ -43,13 +43,5 @@ public class RecordBody {
 		this.message = message;
 	}
 
-	public RecordBody(LocalDateTime mTime, String source, String message) {
-		super();
-		this.mTime = mTime;
-		this.source = source;
-		this.message = message;
-	}
 
-	public RecordBody() {
-	}
 }
