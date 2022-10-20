@@ -8,9 +8,8 @@ public interface AccountService {
 	public List<Account> findAllaccounts();
 
 	public Account getAccountByAccountUid(String accountUId);
-	
-	public String getAccountContactNameByAccountUid(String accountUId);
 
+	public String getAccountContactNameByAccountUid(String accountUId);
 
 	public Account addAccount(Account account);
 
@@ -18,5 +17,6 @@ public interface AccountService {
 
 	public Account updateAccount(String accountUId, Account account) throws Exception;
 
-	
+	public List<Account> getAccountsBySearchText(String searchText);
+
 }

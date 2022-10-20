@@ -38,8 +38,8 @@ public class GuestLogsController {
 		return logsService.addGuestLog(log);
 	}
 
-	@DeleteMapping("/logs/find")
-	public void deleteByLogId(@RequestParam("logId") Long logId) throws Exception {
+	@DeleteMapping("/logs/{logId}")
+	public void deleteByLogId(@PathVariable("logId") Long logId) throws Exception {
 		logsService.deleteByLogId(logId);
 
 	}

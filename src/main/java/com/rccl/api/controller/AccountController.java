@@ -41,19 +41,25 @@ public class AccountController {
 	public Account getAccountByAccountUId(@PathVariable("accountUId") String accountUId) {
 		return accountService.getAccountByAccountUid(accountUId);
 	}
+	
+	@GetMapping("/find")
+	public List<Account> getAccountsBySearchText(@RequestParam("searchText") String searchText) {
+		return accountService.getAccountsBySearchText(searchText);
+	}
+	
 	@PostMapping
 	public Account addNewAccount(@RequestBody Account account){
 		return accountService.addAccount(account);
 	}
 	
-	@DeleteMapping("/find")
-	public String deleteAccount(@RequestParam("accountUId")String accountUId) {
+	@DeleteMapping("/{accountUId}")
+	public String deleteAccount(@PathVariable("accountUId")  String accountUId) {
 	return accountService.deleteAccount(accountUId);
 	
 	}
 	
-	@PutMapping("/find")
-	public Account updateAccount(@RequestParam String accountUId,@RequestBody Account account) throws Exception {
+	@PutMapping("/{accountUId}")
+	public Account updateAccount(@PathVariable("accountUId")  String accountUId,@RequestBody Account account) throws Exception {
 		return accountService.updateAccount(accountUId,account);
 
 }

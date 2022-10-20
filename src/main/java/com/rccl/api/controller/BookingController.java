@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,19 +33,19 @@ public class BookingController {
 		return bookingService.findAllBookingsByAccountId(bookingId);
 	}
 
-	@PostMapping
+	@PostMapping()
 	public Bookings addBooking(@RequestBody Bookings booking) {
 		return bookingService.addBooking(booking);
 	}
 
-	@DeleteMapping("/find")
-	public String deleteBookingsByAccountId(@RequestParam("bookingId") String bookingId) throws Exception {
+	@DeleteMapping("/{bookingId}")
+	public String deleteBookingsByAccountId(@PathVariable("bookingId") String bookingId) throws Exception {
 		bookingService.deleteBookinByBookingId(bookingId);
 		return "Deleted";
 	}
 
-	@PutMapping("/find")
-	public Bookings updateBooking(@RequestParam("bookingId") String bookingId,@RequestBody Bookings booking) throws Exception {
+	@PutMapping("/{bookingId}")
+	public Bookings updateBooking(@PathVariable("bookingId") String bookingId,@RequestBody Bookings booking) throws Exception {
 		return bookingService.updateBooking(bookingId,booking);
 	}
 }

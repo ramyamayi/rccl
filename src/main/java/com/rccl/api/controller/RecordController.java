@@ -38,14 +38,14 @@ public class  RecordController {
 		return recordService.addRecord(record);
 	}
 	
-	@DeleteMapping("/records/find")
-	public String deleteRecord(@RequestParam("record_Id") String record_Id) {
+	@DeleteMapping("/records/{record_Id}")
+	public String deleteRecord(@PathVariable("record_Id") String record_Id) {
 		recordService.deleteRecordByRecordName(record_Id);
 		return "Record deleted";
 	}
 	
-	@PutMapping("/records/find")
-	public Record updateRecord(@RequestParam("record_Id") String record_Id ,@RequestBody Record record) throws Exception {
+	@PutMapping("/records/{record_Id}")
+	public Record updateRecord(@PathVariable("record_Id") String record_Id ,@RequestBody Record record) throws Exception {
 		return recordService.updateRecord(record_Id,record);
 	}
 	
